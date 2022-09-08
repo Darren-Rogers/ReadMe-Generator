@@ -2,14 +2,19 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
 // TODO: Create an array of questions for user input
-const questions = [];
+// const questions = [];
+
+const badges = [`[![license:MIT](https://img.shields.io/badge/license-mit-green.svg)](https://opensource.org/licenses/MIT)`,
+  `[![license:BSD](https://img.shields.io/badge/license-BSD-green.svg)](https://opensource.org/licenses/BSD-2-Clause)`,
+  `[![license:Apache](https://img.shields.io/badge/license-Apache-green.svg)](https://opensource.org/licenses/Apache-2.0)`];
+const [MIT, Apache, BSD] = badges
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) { }
 
 // TODO: Create a function to initialize app
 // const prompt = inquirer.createPromptModule();
-function init() {
+function init(answers) {
   inquirer
     .prompt([
       {
@@ -33,9 +38,10 @@ function init() {
         message: 'What is the usage for this application',
       },
       {
-        type: 'input',
+        type: 'list',
         name: 'License',
         message: 'What license would you like to use for this ReadMe',
+        choices: [MIT, Apache, BSD]
       },
       {
         type: 'input',
@@ -48,25 +54,50 @@ function init() {
         message: 'What are the testing instructions',
       },
     ]).then((answers) => {
-        const template = `
-        #${Title},
-        ## Table of Contents
-        *[Description](#Description)
-        *[Installation](#Installation)
-        *[Usage](#Usage)
-        *[Liscence](#Liscence)
-        *[Contributing](#Contributing)
-        *[Tests](#Tests)
-        ##${Description},
-        ##${Installation},
-        ##${Usage},
-        ##${Liscence},
-        ##${Contributing},
-        ##${Tests}
+      const template = `
+# ${answers.Title}
+## Table of Contents 
+* [Description](#Description)
+* [Installation](#Installation)
+* [Usage](#Usage)
+* [Liscence](#Liscence)
+* [Contributing](#Contributing)
+* [Tests](#Tests)
+
+## Description
+
+${answers.Description}
+
+## Installtion
+
+${answers.Installation}
+
+## Usage
+
+${answers.Usage}
+
+## License
+
+${answers.License}
+
+## Contributing
+
+${answers.Contributing}
+
+## Tests
+
+${answers.Tests}
       `
-      
+      console.log(template)
 
       // console.log(answers) 
+      if (fs.existsSync('utils')) {
+        fs.writeFileSync('utils/README.md', template)
+      } else {
+        fs.mkdirSync('utils', template)
+        fs.writeFileSync('utils/README.md', template)
+
+      }
     })
 }
 
