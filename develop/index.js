@@ -53,6 +53,11 @@ function init(answers) {
         name: 'Tests',
         message: 'What are the testing instructions',
       },
+      {
+        type: 'input',
+        name: 'Questions',
+        message: 'Enter your Github username',
+      },
     ]).then((answers) => {
       const template = `
 # ${answers.Title}
@@ -87,6 +92,9 @@ ${answers.Contributing}
 ## Tests
 
 ${answers.Tests}
+
+## Questions
+Contact ${answers.Questions} with any questions
       `
       console.log(template)
 

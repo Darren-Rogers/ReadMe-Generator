@@ -1,5 +1,5 @@
 
-# fdsfsdfsdf
+# readme generator
 ## Table of Contents 
 * [Description](#Description)
 * [Installation](#Installation)
@@ -9,20 +9,29 @@
 * [Tests](#Tests)
 
 ## Description
-sfsdfsfsdfsdfsdf
+
+this application allows users to create a readme by answering prompts
 
 ## Installtion
-sdfs
+
+this application uses javascript pack manager and can be installed by typing npm install into the console
 
 ## Usage
-dfsdfsdfsdfsdffsdfsdfsfsdfsdfsdf
+
+this application creates a read me page
 
 ## License
+
 [![license:MIT](https://img.shields.io/badge/license-mit-green.svg)](https://opensource.org/licenses/MIT)
 
 ## Contributing
-sdfsfsdfsdfsdfsdffsdfsdf
+
+Darren Rogers
 
 ## Tests
-sdfsfsddfsdfsdfsdfsdfsdfsd
+
+This a test
+
+## Questions
+Contact Darren-Rogers with any questions
       
